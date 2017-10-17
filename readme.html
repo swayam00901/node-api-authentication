@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Untitled Document.md</title><script type="text/javascript">
+//<![CDATA[
+window.__cfRocketOptions = {byc:0,p:0,petok:"8c2eb837870ecebf1fc31f895dcfda06883b1c2c-1508243158-1800"};
+//]]>
+</script>
+<script type="text/javascript" src="https://ajax.cloudflare.com/cdn-cgi/scripts/aa4d662a/cloudflare-static/rocket.min.js"></script>
+<style></style></head><body id="preview">
+<h1><a id="Orange_Theory_NodeAPI_Test_0"></a>Orange Theory Node-API Test</h1>
+<p>[<img src="/c1.jpg" alt="N|Solid">]</p>
+<p>This is a an API using Node and Express and POSTman is used to test it.</p>
+<h2><a id="The_main_workflow_of_this_is_that_we_will_6"></a>The main workflow of this is that we will:</h2>
+<p>Have unprotected and protected routes</p>
+<ul>
+<li>
+<p>A user will authenticate by calling /api/authenticate and get back a token</p>
+</li>
+<li>
+<p>The user will store this token on their client-side and send it for every request</p>
+</li>
+<li>
+<p>We will validate this token, and if all is good, pass back information in JSON format<br>
+Our API will be built with:</p>
+</li>
+<li>
+<p>normal routes (not authenticated)</p>
+</li>
+<li>
+<p>route middleware to authenticate the token</p>
+</li>
+<li>
+<p>route to authenticate and get a token</p>
+</li>
+<li>
+<p>authenticated routes to get all users</p>
+</li>
+</ul>
+<h2><a id="Tools_Needed_18"></a>Tools Needed</h2>
+<ul>
+<li>node and npm</li>
+<li>POSTman</li>
+</ul>
+<h2><a id="Getting_Started_21"></a>Getting Started</h2>
+<p>Let’s take a look at our file structure for our Node application. server.js will contain all the functionalities.</p>
+<h3><a id="File_Structure_25"></a>File Structure</h3>
+<p>----- models/<br>
+---------- user.js<br>
+------certs/<br>
+----- config.js<br>
+----- package.json<br>
+----- server.js</p>
+<h2><a id="AWS_Cloud_hosted_mongodb_32"></a>AWS Cloud hosted mongodb</h2>
+<p><code>https://mlab.com/databases/orange-theory-db</code></p>
+<h3><a id="configure_database_in_Config_File_configjs_34"></a>configure database in Config File (config.js)</h3>
+<ul>
+<li>
+<p>you can either create local mongodb instance or create it in mLabs using cloud platform.</p>
+</li>
+<li>
+<p>Following the format:</p>
+</li>
+<li>
+<p>mongodb://&lt;username&gt;:&lt;password&gt;@ds153719.mlab.com:53719/orange-theory-d</p>
+</li>
+<li>
+<p>secret: used when we create and verify JSON Web Tokens</p>
+</li>
+<li>
+<p>database: the URI with username and password to your MongoDB installation</p>
+<pre><code>  module.exports = {
+  
+      'secret': 'fitnessOrangeTheory',
+      'database': 'mongodb://orange-theory-admin:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dfaeff8fce9f2effcf3faf8ddf9eeaca8aeaaaca4b3f0f1fcffb3fef2f0">[email&#160;protected]</a>:53719/orange-theory-db'
+};
+</code></pre>
+</li>
+</ul>
+<h2><a id="Set_Up_Our_Node_Application_46"></a>Set Up Our Node Application</h2>
+<p><code>npm install</code><br>
+<code>npm install -g nodemon</code></p>
+<h3><a id="Start_your_server_49"></a>Start your server</h3>
+<p><code>nodemon server.js</code></p>
+<h2><a id="Run_The_Actual_Node_Application_serverjs_52"></a>Run The Actual Node Application (server.js)</h2>
+<p><code>nodemon server.js</code><br>
+In this file, we will:</p>
+<h3><a id="Grab_All_the_Packages_56"></a>Grab All the Packages</h3>
+<p>This will include the packages we installed earlier (express, body-parser, morgan, mongoose, and jsonwebtoken) and also we’ll be grabbing the model and config that we created.</p>
+<h3><a id="Configure_Our_Application_59"></a>Configure Our Application</h3>
+<p>We will set our important variables, configure our packages, and connect to our database here.</p>
+<h3><a id="Create_Basic_Routes_62"></a>Create Basic Routes</h3>
+<h4><a id="unprotected_route_63"></a>unprotected route</h4>
+<p>These are the unprotected routes like the home page (<code>http://localhost:8888/api</code>). We’ll also create a /setup route here so that we can create a sample user in our new database.</p>
+<h4><a id="Protected_route_with_ssl_65"></a>Protected route with ssl</h4>
+<p><code>https://localhost:4433/api</code><br>
+In browser:</p>
+<ul>
+<li>“The site’s security certificate has expired!” is shown</li>
+<li>click “proceed anyway” (or “back to safety”)</li>
+</ul>
+<p>PostMan test:</p>
+<ul>
+<li>To test in post man go to settings in wrench icon on top right corner and turn off ssl certificate verification</li>
+</ul>
+<h2><a id="PostMan_collection_is_attached_73"></a>PostMan collection is attached</h2>
+<ul>
+<li>use the postman.html or go to following link<br>
+<code>https://www.getpostman.com/collections/9cc63dcd5d41e9022e8d</code></li>
+</ul>
+<h3><a id="Create_API_Routes_This_includes_the_following_routes_76"></a>Create API Routes This includes the following routes:</h3>
+<p>GET <a href="https://localhost:4433/api/">https://localhost:4433/api/</a><br>
+No token attached , so will return</p>
+<ul>
+<li>Unauthorized users should be able to get a list of all saved data items<br>
+•   ID and First &amp; Last Name should only be returned<br>
+•   Ordered by Last Name, First Name<br>
+•   The calling client should be able to enable paging and page size</li>
+</ul>
+<p>POST <a href="https://localhost:4433/api/authenticate">https://localhost:4433/api/authenticate</a> get the token to be used in authenticated routes below. Save the token</p>
+<pre><code>{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Enjoy your token!&quot;,
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY&quot;
+}
+</code></pre>
+<h3><a id="Configure_in_postman_92"></a>Configure in postman</h3>
+<p>-In Headers tab,<br>
+write in key - x-access-token<br>
+write in value - above token</p>
+<p>-For Post requests in body tab<br>
+select x-www-urlformencoded<br>
+and type your key and values.</p>
+<p>GET <a href="https://localhost:4433/api/">https://localhost:4433/api/</a><br>
+With above token configuration</p>
+<pre><code>{
+    &quot;message&quot;: &quot;Welcome to the OrangeFactory APIs!&quot;
+}
+</code></pre>
+<h3><a id="Logging_108"></a>Logging</h3>
+<p>All the activities will be logged and you can see in command line<br>
+after you start the server <code>nodemon server.js</code></p>
+<p>GET <a href="https://localhost:4433/setup/:numUsers">https://localhost:4433/setup/:numUsers</a> will initialize n number of users as specified in numUsers parameter , say GET <a href="https://localhost:4433/setup/5000">https://localhost:4433/setup/5000</a> will set 5000 users.<br>
+<code>credit card will be stored as encrypted record</code><br>
+<code>&quot;creditcard&quot;: &quot;$2a$08$jIvSFp9Lmf5HZTOY8o1k8ObPNYQ8IOb1JAmwpMv3VWasydG7hf6F2&quot;</code><br>
+GET <a href="https://localhost:4433/api/users">https://localhost:4433/api/users</a> get all the users in collection.</p>
+<p>GET <a href="https://localhost:4433/api/usersLimit/:pageSize/:page">https://localhost:4433/api/usersLimit/:pageSize/:page</a><br>
+It gives number of records from the page number specified.<br>
+sample call GET <a href="https://localhost:4433/api/usersLimit/5/3">https://localhost:4433/api/usersLimit/5/3</a></p>
+<p>POST <a href="https://localhost:4433/api/create">https://localhost:4433/api/create</a><br>
+Creates a new user</p>
+<p>GET <a href="https://localhost:4433/api/:id">https://localhost:4433/api/:id</a><br>
+Returns user based on id.</p>
+<p>PUT <a href="https://localhost:4433/api/:id">https://localhost:4433/api/:id</a><br>
+Updates user value based on id</p>
+<p>DEL <a href="https://localhost:4433/api/:id">https://localhost:4433/api/:id</a><br>
+Deletes user based on id</p>
+<p>DEL <a href="https://localhost:4433/api/users">https://localhost:4433/api/users</a><br>
+Deletes all users from collection</p>
+<p>GET <a href="http://localhost:8080/api/users">http://localhost:8080/api/users</a> List all users. This route is protected and will require a token.<br>
+With those things in our mind, let’s start our server.js file:</p>
+<h3><a id="Packages_used_139"></a>Packages used</h3>
+<ul>
+<li>express is the popular Node framework</li>
+<li>mongoose is how we interact with our MongoDB database</li>
+<li>morgan will log requests to the console so we can see what is happening</li>
+<li>body-parser will let us get parameters from our POST requests</li>
+<li>jsonwebtoken is how we create and verify our JSON Web Tokens</li>
+</ul>
+
+<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script></body></html>

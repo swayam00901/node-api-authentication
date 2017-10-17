@@ -1,0 +1,307 @@
+{
+	"info": {
+		"name": "node-api-test",
+		"_postman_id": "1970f766-1786-81e2-e4cd-0b2fafe96d3b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:4433/api/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstName",
+							"value": "jill12",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "collman12",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "creditcard",
+							"value": "3456-3435-2342-6677",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "Male",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sdf22@gfh.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "birthday",
+							"value": "2392-03-01T05:00:00.000Z",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:4433/api/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						"create"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/usersLimit/3/5",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/api/usersLimit/3/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						"usersLimit",
+						"3",
+						"5"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/api/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": "When No token is provided , it returns firstName and secondName of all users."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/setup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/setup",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"setup"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/59e4bdfe80d34e6ac411d74d",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/api/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/59e4bdfe80d34e6ac411d74d copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/api/59e4bdff80d34e6ac411d753",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						"59e4bdff80d34e6ac411d753"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/59e4bdfe80d34e6ac411d74d copy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstName",
+							"value": "Swayam001",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:4433/api/59e4bdfe80d34e6ac411d74d",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						"59e4bdfe80d34e6ac411d74d"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/api/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": "This is to validate that with token , this initial route works."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:4433/api/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.dHJ1ZQ.7p1yasaGzihJQDix5R_3Bhyih9v841RaW2JrOo2MqwY"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:4433/api/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4433",
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": "Delete all users from collection."
+			},
+			"response": []
+		}
+	]
+}
